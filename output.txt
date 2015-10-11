@@ -1,0 +1,67 @@
+Tempo Execucao:0.0
+Classe: 1
+id: 1146
+elongation != 0| 0.8
+thinning >= 1| 1.0
+Fit:0.9405
+
+ 
+Tempo Execucao:20.698
+Classe: 2
+id: 4422
+oralMucosalInvolvement < 2| 0.97999996
+melaninIncontinence < 1| 0.85
+fibrosis < 1| 0.84999996
+clubbing = 0| 0.90000004
+follicular < 2| 0.9
+perifollicular != 2| 0.97
+classDisease < 4| 1.0
+Fit:0.82
+
+ 
+Tempo Execucao:39.655
+Classe: 3
+id: 6327
+pnlInfiltrate != 2| 0.8
+bandLike >= 2| 0.84999996
+Fit:0.99
+
+ 
+Tempo Execucao:18.675
+Classe: 4
+id: 11091
+oralMucosalInvolvement < 1| 0.94
+scalpInvolvement < 2| 0.82000005
+acanthosis < 3| 1.0
+clubbing = 0| 0.81999993
+elongation = 0| 1.0
+spongiform < 1| 0.92999995
+Fit:0.81
+
+ 
+Tempo Execucao:46.601
+Classe: 5
+id: 13422
+koebnerPhenomenon = 0| 0.81000006
+polygonalPapules = 0| 0.92
+pnlInfiltrate = 0| 0.9
+fibrosis >= 1| 0.83000004
+vacuolisation < 2| 0.8
+perifollicular < 1| 0.8
+classDisease = 2| 1.0
+Fit:1.0
+
+ 
+Tempo Execucao:24.649
+Classe: 6
+id: 15978
+itching < 3| 0.96000004
+oralMucosalInvolvement < 2| 0.9499999
+exocytosis < 3| 0.8499999
+acanthosis < 3| 0.9
+parakeratosis >= 1| 0.87
+thinning < 1| 0.89000005
+sawYooth < 2| 0.94
+Fit:0.82
+
+ 
