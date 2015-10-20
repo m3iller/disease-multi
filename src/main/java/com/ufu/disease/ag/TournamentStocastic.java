@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import org.omg.CORBA.OBJ_ADAPTER;
+
 import com.ufu.disease.to.Chromossomo;
 import com.ufu.disease.to.ChromossomoComparator;
 import com.ufu.disease.to.Gene;
@@ -14,14 +16,18 @@ import com.ufu.disease.to.Operator;
 
 public class TournamentStocastic {
 
-	public List<Chromossomo> tournamentStocastic(Float maxFitness,List<Chromossomo> populacao, int size){
+	public List<Chromossomo> tournamentStocastic(List<Chromossomo> populacao, int size){
 			List<Chromossomo> chromoSelected = new ArrayList<Chromossomo>();
 			for(int i=1;i<=size;i++) {
 				Float tempSum = 0.0f;
-				double randomNum = Math.random()*maxFitness;
+				Float maxFit = 0.0f;
 				for(Chromossomo c: populacao) {
-					if(c.getFitness() != null) {
-					tempSum += c.getFitness();
+					maxFit = c.getFunction1() + c.getFunction2();
+				}
+				for(Chromossomo c: populacao) {
+					double randomNum = Math.random()*maxFit;
+					if(c.getFunction1() != null) {
+					tempSum += c.getFunction1() + c.getFunction2();
 						if(tempSum > randomNum) {
 							if(chromoSelected.contains(c)) {
 								continue;
@@ -41,15 +47,14 @@ public class TournamentStocastic {
 	}
 	
 	
-	
-	public List<Chromossomo> tournamentTimes(Float maxFitness,List<Chromossomo> populacao, int size,int vezes, int geracao) {
+	public List<Chromossomo> tournamentTimes(List<Chromossomo> populacao, int size,int vezes, int geracao) {
 		
 		List<Chromossomo> torneiosElement = new ArrayList<Chromossomo>();
 		for(int k=0;k <=vezes;k++) {
 		
 			List<Chromossomo> chromoSelected = new ArrayList<Chromossomo>();
-			List<Chromossomo> chromoSelected1 = tournamentStocastic(maxFitness, populacao, size);
-			List<Chromossomo> chromoSelected2 = tournamentStocastic(maxFitness, populacao, size);
+			List<Chromossomo> chromoSelected1 = tournamentStocastic(populacao, size);
+			List<Chromossomo> chromoSelected2 = tournamentStocastic(populacao, size);
 			
 			if(chromoSelected1.size() >0 && chromoSelected1.get(0) != null
 					&& chromoSelected2.size()>1 && chromoSelected2.get(1) != null) {
@@ -80,7 +85,7 @@ public class TournamentStocastic {
 			}
 		
 		} else {
-			System.out.println("tem gente nulo ai max fit:" + maxFitness);
+			System.out.println("tem gente nulo ai max fit:");
 		}
 		}
 		return torneiosElement;
@@ -100,13 +105,26 @@ public class TournamentStocastic {
 			if(f.getName().equals("idDermatology")) {
 				continue;
 			}
+			if(f.getName().equals("function1")) {
+				continue;
+			}
+			if(f.getName().equals("function2")) {
+				continue;
+			}
 			
 			int p1 = r.nextInt((100 - 1) + 1) + 1;
 			int p2 = r.nextInt((100 - 1) + 1) + 1;
 			int p3 = r.nextInt((100 - 1) + 1) + 1;
 			
 			f.setAccessible(true);
-			Gene geneChromoOne = (Gene) f.get(c1);
+			Object obj = f.get(c1);
+			Gene geneChromoOne = null;
+			if(obj instanceof Gene) {
+				geneChromoOne = (Gene) obj;
+			} else {
+				continue;
+			}
+			
 			//System.out.println(geneChromoOne);
 			
 			if(p1 <= porcentage) {

@@ -45,6 +45,14 @@ public class Chromossomo {
 		this.bandLike= new Gene();
 		this.age= new Gene();
 		this.classDisease= new Gene();
+		
+		// spea 2
+		this.strenght = new Float(0.0f);
+		this.function1 =  new Float(0.0f);
+		this.function2 =  new Float(0.0f);
+		this.rawFitness =  new Float(0.0f);
+		this.density =  new Float(0.0f);
+		this.fitness =  new Float(0.0f);;
 	}
 
 	private Integer idDermatology;
@@ -84,224 +92,258 @@ public class Chromossomo {
 	private Gene age;
 	private Gene classDisease;
 	
+	private Float function1;
+	private Float function2;
+	private Float rawFitness;
+	private Float strenght;
+	private Float density;
 	private Float fitness;
 	
-	public final Integer getIdDermatology() {
+	public Integer getIdDermatology() {
 		return idDermatology;
 	}
-	public final void setIdDermatology(Integer idDermatology) {
+	public void setIdDermatology(Integer idDermatology) {
 		this.idDermatology = idDermatology;
 	}
-	public final Gene getErythema() {
+	public Gene getErythema() {
 		return erythema;
 	}
-	public final void setErythema(Gene erythema) {
+	public void setErythema(Gene erythema) {
 		this.erythema = erythema;
 	}
-	public final Gene getScaling() {
+	public Gene getScaling() {
 		return scaling;
 	}
-	public final void setScaling(Gene scaling) {
+	public void setScaling(Gene scaling) {
 		this.scaling = scaling;
 	}
-	public final Gene getDefiniteBorders() {
+	public Gene getDefiniteBorders() {
 		return definiteBorders;
 	}
-	public final void setDefiniteBorders(Gene definiteBorders) {
+	public void setDefiniteBorders(Gene definiteBorders) {
 		this.definiteBorders = definiteBorders;
 	}
-	public final Gene getItching() {
+	public Gene getItching() {
 		return itching;
 	}
-	public final void setItching(Gene itching) {
+	public void setItching(Gene itching) {
 		this.itching = itching;
 	}
-	public final Gene getKoebnerPhenomenon() {
+	public Gene getKoebnerPhenomenon() {
 		return koebnerPhenomenon;
 	}
-	public final void setKoebnerPhenomenon(Gene koebnerPhenomenon) {
+	public void setKoebnerPhenomenon(Gene koebnerPhenomenon) {
 		this.koebnerPhenomenon = koebnerPhenomenon;
 	}
-	public final Gene getPolygonalPapules() {
+	public Gene getPolygonalPapules() {
 		return polygonalPapules;
 	}
-	public final void setPolygonalPapules(Gene polygonalPapules) {
+	public void setPolygonalPapules(Gene polygonalPapules) {
 		this.polygonalPapules = polygonalPapules;
 	}
-	public final Gene getFollicularPapules() {
+	public Gene getFollicularPapules() {
 		return follicularPapules;
 	}
-	public final void setFollicularPapules(Gene follicularPapules) {
+	public void setFollicularPapules(Gene follicularPapules) {
 		this.follicularPapules = follicularPapules;
 	}
-	public final Gene getOralMucosalInvolvement() {
+	public Gene getOralMucosalInvolvement() {
 		return oralMucosalInvolvement;
 	}
-	public final void setOralMucosalInvolvement(Gene oralMucosalInvolvement) {
+	public void setOralMucosalInvolvement(Gene oralMucosalInvolvement) {
 		this.oralMucosalInvolvement = oralMucosalInvolvement;
 	}
-	public final Gene getKneeElbowInvolvement() {
+	public Gene getKneeElbowInvolvement() {
 		return kneeElbowInvolvement;
 	}
-	public final void setKneeElbowInvolvement(Gene kneeElbowInvolvement) {
+	public void setKneeElbowInvolvement(Gene kneeElbowInvolvement) {
 		this.kneeElbowInvolvement = kneeElbowInvolvement;
 	}
-	public final Gene getScalpInvolvement() {
+	public Gene getScalpInvolvement() {
 		return scalpInvolvement;
 	}
-	public final void setScalpInvolvement(Gene scalpInvolvement) {
+	public void setScalpInvolvement(Gene scalpInvolvement) {
 		this.scalpInvolvement = scalpInvolvement;
 	}
-	public final Gene getFamilyHistory() {
+	public Gene getFamilyHistory() {
 		return familyHistory;
 	}
-	
-	public final void setFamilyHistory(Gene familyHistory) {
+	public void setFamilyHistory(Gene familyHistory) {
 		this.familyHistory = familyHistory;
 	}
-	public final Gene getMelaninIncontinence() {
+	public Gene getMelaninIncontinence() {
 		return melaninIncontinence;
 	}
-	public final void setMelaninIncontinence(Gene melaninIncontinence) {
+	public void setMelaninIncontinence(Gene melaninIncontinence) {
 		this.melaninIncontinence = melaninIncontinence;
 	}
-	public final Gene getEosinophils() {
+	public Gene getEosinophils() {
 		return eosinophils;
 	}
-	public final void setEosinophils(Gene eosinophils) {
+	public void setEosinophils(Gene eosinophils) {
 		this.eosinophils = eosinophils;
 	}
-	public final Gene getPnlInfiltrate() {
+	public Gene getPnlInfiltrate() {
 		return pnlInfiltrate;
 	}
-	public final void setPnlInfiltrate(Gene pnlInfiltrate) {
+	public void setPnlInfiltrate(Gene pnlInfiltrate) {
 		this.pnlInfiltrate = pnlInfiltrate;
 	}
-	public final Gene getFibrosis() {
+	public Gene getFibrosis() {
 		return fibrosis;
 	}
-	public final void setFibrosis(Gene fibrosis) {
+	public void setFibrosis(Gene fibrosis) {
 		this.fibrosis = fibrosis;
 	}
-	public final Gene getExocytosis() {
+	public Gene getExocytosis() {
 		return exocytosis;
 	}
-	public final void setExocytosis(Gene exocytosis) {
+	public void setExocytosis(Gene exocytosis) {
 		this.exocytosis = exocytosis;
 	}
-	public final Gene getAcanthosis() {
+	public Gene getAcanthosis() {
 		return acanthosis;
 	}
-	public final void setAcanthosis(Gene acanthosis) {
+	public void setAcanthosis(Gene acanthosis) {
 		this.acanthosis = acanthosis;
 	}
-	public final Gene getHyperkeratosis() {
+	public Gene getHyperkeratosis() {
 		return hyperkeratosis;
 	}
-	public final void setHyperkeratosis(Gene hyperkeratosis) {
+	public void setHyperkeratosis(Gene hyperkeratosis) {
 		this.hyperkeratosis = hyperkeratosis;
 	}
-	public final Gene getParakeratosis() {
+	public Gene getParakeratosis() {
 		return parakeratosis;
 	}
-	public final void setParakeratosis(Gene parakeratosis) {
+	public void setParakeratosis(Gene parakeratosis) {
 		this.parakeratosis = parakeratosis;
 	}
-	public final Gene getClubbing() {
+	public Gene getClubbing() {
 		return clubbing;
 	}
-	public final void setClubbing(Gene clubbing) {
+	public void setClubbing(Gene clubbing) {
 		this.clubbing = clubbing;
 	}
-	public final Gene getElongation() {
+	public Gene getElongation() {
 		return elongation;
 	}
-	public final void setElongation(Gene elongation) {
+	public void setElongation(Gene elongation) {
 		this.elongation = elongation;
 	}
-	public final Gene getThinning() {
+	public Gene getThinning() {
 		return thinning;
 	}
-	public final void setThinning(Gene thinning) {
+	public void setThinning(Gene thinning) {
 		this.thinning = thinning;
 	}
-	public final Gene getSpongiform() {
+	public Gene getSpongiform() {
 		return spongiform;
 	}
-	public final void setSpongiform(Gene spongiform) {
+	public void setSpongiform(Gene spongiform) {
 		this.spongiform = spongiform;
 	}
-	public final Gene getMunroIcroabcess() {
+	public Gene getMunroIcroabcess() {
 		return munroIcroabcess;
 	}
-	public final void setMunroIcroabcess(Gene munroIcroabcess) {
+	public void setMunroIcroabcess(Gene munroIcroabcess) {
 		this.munroIcroabcess = munroIcroabcess;
 	}
-	public final Gene getFocalHypergranulosis() {
+	public Gene getFocalHypergranulosis() {
 		return focalHypergranulosis;
 	}
-	public final void setFocalHypergranulosis(Gene focalHypergranulosis) {
+	public void setFocalHypergranulosis(Gene focalHypergranulosis) {
 		this.focalHypergranulosis = focalHypergranulosis;
 	}
-	public final Gene getDisappearance() {
+	public Gene getDisappearance() {
 		return disappearance;
 	}
-	public final void setDisappearance(Gene disappearance) {
+	public void setDisappearance(Gene disappearance) {
 		this.disappearance = disappearance;
 	}
-	public final Gene getVacuolisation() {
+	public Gene getVacuolisation() {
 		return vacuolisation;
 	}
-	public final void setVacuolisation(Gene vacuolisation) {
+	public void setVacuolisation(Gene vacuolisation) {
 		this.vacuolisation = vacuolisation;
 	}
-	public final Gene getSpongiosis() {
+	public Gene getSpongiosis() {
 		return spongiosis;
 	}
-	public final void setSpongiosis(Gene spongiosis) {
+	public void setSpongiosis(Gene spongiosis) {
 		this.spongiosis = spongiosis;
 	}
-	public final Gene getSawYooth() {
+	public Gene getSawYooth() {
 		return sawYooth;
 	}
-	public final void setSawYooth(Gene sawYooth) {
+	public void setSawYooth(Gene sawYooth) {
 		this.sawYooth = sawYooth;
 	}
-	public final Gene getFollicular() {
+	public Gene getFollicular() {
 		return follicular;
 	}
-	public final void setFollicular(Gene follicular) {
+	public void setFollicular(Gene follicular) {
 		this.follicular = follicular;
 	}
-	public final Gene getPerifollicular() {
+	public Gene getPerifollicular() {
 		return perifollicular;
 	}
-	public final void setPerifollicular(Gene perifollicular) {
+	public void setPerifollicular(Gene perifollicular) {
 		this.perifollicular = perifollicular;
 	}
-	public final Gene getInflammatory() {
+	public Gene getInflammatory() {
 		return inflammatory;
 	}
-	public final void setInflammatory(Gene inflammatory) {
+	public void setInflammatory(Gene inflammatory) {
 		this.inflammatory = inflammatory;
 	}
-	public final Gene getBandLike() {
+	public Gene getBandLike() {
 		return bandLike;
 	}
-	public final void setBandLike(Gene bandLike) {
+	public void setBandLike(Gene bandLike) {
 		this.bandLike = bandLike;
 	}
-	public final Gene getAge() {
+	public Gene getAge() {
 		return age;
 	}
-	public final void setAge(Gene age) {
+	public void setAge(Gene age) {
 		this.age = age;
 	}
-	public final Gene getClassDisease() {
+	public Gene getClassDisease() {
 		return classDisease;
 	}
-	public final void setClassDisease(Gene classDisease) {
+	public void setClassDisease(Gene classDisease) {
 		this.classDisease = classDisease;
+	}
+	public Float getFunction1() {
+		return function1;
+	}
+	public void setFunction1(Float function1) {
+		this.function1 = function1;
+	}
+	public Float getFunction2() {
+		return function2;
+	}
+	public void setFunction2(Float function2) {
+		this.function2 = function2;
+	}
+	public Float getRawFitness() {
+		return rawFitness;
+	}
+	public void setRawFitness(Float rawFitness) {
+		this.rawFitness = rawFitness;
+	}
+	public Float getStrenght() {
+		return strenght;
+	}
+	public void setStrenght(Float strenght) {
+		this.strenght = strenght;
+	}
+	public Float getDensity() {
+		return density;
+	}
+	public void setDensity(Float density) {
+		this.density = density;
 	}
 	public Float getFitness() {
 		return fitness;
@@ -309,9 +351,6 @@ public class Chromossomo {
 	public void setFitness(Float fitness) {
 		this.fitness = fitness;
 	}
-	
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -388,15 +427,15 @@ public class Chromossomo {
 	@Override
 	public String toString() {
 		return " ID: " + idDermatology +
-				" Fitness:" + this.getFitness();
+				" Fitness:" + this.getFunction1();
 	}
 	
 	public static void printChromossomo(Chromossomo c) {
 		try {
 			System.out.println("id: " + c.getIdDermatology());
 			for (Field field : c.getClass().getDeclaredFields()) {
-				field.setAccessible(true); // You might want to set modifier to
-											// public first.
+				field.setAccessible(true); 
+											
 				Object o = field.get(c);
 				if (o instanceof Gene) {
 					o = (Gene) o;
@@ -417,7 +456,7 @@ public class Chromossomo {
 					}
 				}
 			}
-			System.out.println("Fit:" + c.getFitness());
+			System.out.println("Fit:" + c.getFitness()  + "F1:" + c.getFunction1() + "F2:" + c.getFunction2());
 			System.out.println("\n ");
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
