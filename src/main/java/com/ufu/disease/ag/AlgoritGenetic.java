@@ -24,7 +24,6 @@ public class AlgoritGenetic {
 	public static List<Chromossomo> classFive;
 	public static List<Chromossomo> classSix;
 	
-	//private static DermatologyDAO dao = new DermatologyDAO();
 	public void randomElements() {
 	}
 	
@@ -39,11 +38,11 @@ public class AlgoritGenetic {
 		return pop;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws CloneNotSupportedException {
 		Long init = 0l;
 		Long end = 0l;
 		initTesteList();
-		for (int classAg = 1; classAg <= 1; classAg++) {
+		for (int classAg = 1; classAg <= 6; classAg++) {
 			
 			//initDistance(49);
 			Float tempo = ((end - init) / 1000f);
@@ -53,31 +52,33 @@ public class AlgoritGenetic {
 			List<Chromossomo> archive = new ArrayList<Chromossomo>();
 			
 			Fitness f = new Fitness();
-			//f.calculateFitnessSpea2(popupalcao, archive, classAg);
-			//Chromossomo.printChromossomo(c);
+			TournamentStocastic tournament = new TournamentStocastic();
+			Spea2Select spea2 = new Spea2Select();
+			
 			
 			for (int j = 1; j <= generation; j++) {
-				//System.out.println("Classe " + i);
 				
-				//Collections.sort(popupalcao, new ChromossomoComparator());
-				Chromossomo elit = popupalcao.get(0);
-				TournamentStocastic tournament = new TournamentStocastic();
-				//List<Chromossomo> tourElements = tournament.tournamentTimes(fitnessSum, popupalcao,sizeTournament, 24,i);
-				//popupalcao.addAll(tourElements);
-				//for (Chromossomo c : popupalcao) {
 				f.calculateFitnessSpea2(popupalcao, archive,classAg);
-				List<Chromossomo> nextArchive = f.selectSpea2(popupalcao, archive);
 				
-				List<Chromossomo> tourElements = tournament.tournamentTimes(nextArchive,sizeTournament, 24,classAg);
+				Collections.sort(popupalcao, new ChromossomoComparator());
+				popupalcao = popupalcao.subList(0, 49);
 				
-				f.calculateFitnessSpea2(tourElements, archive,classAg);
+				Collections.sort(popupalcao, new ChromossomoComparator());
+				List<Chromossomo> nextGeneration = new ArrayList<Chromossomo>();
+				spea2.speaSelection(popupalcao, nextGeneration, archive);
+				
+				List<Chromossomo> tourElements = tournament.spea2TournamentTimes(nextGeneration,sizeTournament, 25,classAg);
+				
+				popupalcao.addAll(tourElements);
 				Collections.sort(tourElements, new ChromossomoComparator());
-	
-				archive = tourElements.subList(0, 49);
-				if(!archive.contains(elit)) {
-					archive.add(elit);
+				
+				archive = new ArrayList<Chromossomo>();
+				archive.addAll(nextGeneration);
+				Collections.sort(archive, new ChromossomoComparator());
+				if(archive.size() > 49) {
+					archive.subList(0, 49);
 				}
-				popupalcao = archive;
+				
 			}
 			
 			System.out.println("Classe: " + classAg);
@@ -85,10 +86,6 @@ public class AlgoritGenetic {
 			end = System.currentTimeMillis();
 		}
 	}
-	
-//	public static void initDistance(int maxsize) {
-//		distance = new double[maxsize][maxsize];
-//	}
 	
 	public static void initTesteList() {
 		DermatologyDAO dao = new DermatologyDAO();

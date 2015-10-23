@@ -1,0 +1,60 @@
+SPEA2
+
+Tempo Execucao:0.0
+Classe: 1
+id: 2027
+clubbing >= 1| 0.95
+spongiosis >= 0| 0.9
+follicular < 1| 0.97999996
+Fit:0.31389704F1:0.96F2:0.98770493
+
+ 
+Tempo Execucao:441.076
+Classe: 2
+id: 6151
+koebnerPhenomenon = 0| 0.84999996
+melaninIncontinence = 0| 0.85
+eosinophils != 3| 0.8000001
+fibrosis < 3| 0.8
+spongiosis != 0| 0.81
+classDisease < 2| 0.96
+Fit:0.3503139F1:0.8008F2:0.9057377
+
+ 
+Tempo Execucao:381.938
+Classe: 3
+id: 7137
+thinning = 0| 0.9800001
+vacuolisation >= 1| 0.8
+Fit:0.30362704F1:0.98F2:0.99590164
+
+ 
+Tempo Execucao:372.831
+Classe: 4
+id: 11429
+scaling != 3| 0.90000004
+kneeElbowInvolvement != 3| 0.85
+acanthosis < 2| 0.83
+hyperkeratosis != 2| 0.93
+spongiosis >= 2| 0.87
+bandLike != 3| 0.87
+Fit:306188.4F1:0.3895F2:0.88114756
+
+ 
+Tempo Execucao:358.872
+Classe: 5
+id: 13210
+polygonalPapules != 2| 0.8
+fibrosis != 0| 1.0
+Fit:0.29870796F1:1.0F2:1.0
+
+ 
+Tempo Execucao:364.636
+Classe: 6
+id: 14971
+exocytosis != 3| 0.83000004
+perifollicular >= 1| 0.93
+classDisease = 3| 0.90999997
+Fit:0.30077648F1:1.0F2:1.0
+
+ 

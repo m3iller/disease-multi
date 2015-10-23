@@ -17,7 +17,6 @@ public class CrossOver {
 		novo.setIdDermatology(AlgoritGenetic.id++);
 		
 		//System.out.println("idcriado:" +AlgoritGenetic.id);
-		
 		Random r = new Random();
 		Field[] fieldsChromoOne = c1.getClass().getDeclaredFields();
 		Field[] fieldsChromoTwo = c2.getClass().getDeclaredFields();

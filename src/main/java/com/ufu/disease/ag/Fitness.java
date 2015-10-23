@@ -1,96 +1,29 @@
 package com.ufu.disease.ag;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import com.udojava.evalex.Expression;
 import com.ufu.disease.to.Chromossomo;
-import com.ufu.disease.to.ChromossomoComparator;
 import com.ufu.disease.to.Gene;
 
+/**
+ * classe que calcula o fitness com base no algoritmo spea2
+ * 
+ * @author miller
+ *
+ */
 public class Fitness {
 
-	private static Integer TAMANHO_ARCHIVE = 50;
+	public static Integer TAMANHO_ARCHIVE = 49;
 	public static Float threshold = 0.80f;
 	private Double distance[][];
 
+	private Spea2Select spea = new Spea2Select();
 	public Fitness() {
 		super();
 	}
-	
-	public void calculateFitnessSpea2(List<Chromossomo> population, List<Chromossomo> archive, Integer classAg) {
-		//population.addAll(archive);
-		for(Chromossomo chromoAleatorio: population) {
-			calculateFitness(chromoAleatorio, classAg);
-		}
-		calculateStrenght(population);
-		calculateRawDistanceFit(population, archive);
-	}
-	
-	
-	/**
-	 * retorno os individuos da proxima geração 
-	 * 
-	 * @param population
-	 * @return
-	 */
-	public List<Chromossomo> selectSpea2(List<Chromossomo> population, List<Chromossomo> archive) {
-		
-		List<Chromossomo> nextGen = new ArrayList<Chromossomo>();
-		Collections.sort(population, new ChromossomoComparator());
-		
-		for(Chromossomo c: population) {
-			if(c.getFitness() < 1) {
-				nextGen.add(c);
-			}
-		}
-		
-		for(Chromossomo c: archive) {
-			if(c.getFitness() < 1) {
-				nextGen.add(c);
-			}
-		}
-		
-		//depois de adicionar todos nao dominas  f < 0 teremos 3 condicoes
-		//mesmo tamanho
-		if(nextGen.size() == archive.size()) {
-			//faz nada
-		} 
-		
-		if(nextGen.size() > archive.size()) {
-			//pega o ktzimo elemento mais proximo com distancia menor remove ate chegar no numero maximo
-			
-			distance = calcDistanceEucli(nextGen);
-			int x=0;
-			while(nextGen.size() < 50) {
-				List<Double> list = Arrays.asList(distance[x]);
-				Collections.sort(list);
-				
-				for(int y=0; y< list.size(); y++) {
-					if(list.get(y++) < list.get(y)) {
-						nextGen.remove(y++);
-						break;
-					}
-				}
-				x++;
-			}
-			
-		}
-		//se for menor adiciona os melhores elementos para proxima geracao
-		if(nextGen.size() < archive.size()) {
-			population.addAll(archive);
-			Collections.sort(population,new ChromossomoComparator());
-			int i=0;
-			while(nextGen.size() < 50) {
-				nextGen.add(population.get(i++));
-			}
-		}
-		
-		return nextGen;
-	}
-	
 	/**
 	 * calcula as strenght de cada individuo, +1 para cada indivudo que ele domina
 	 * 
@@ -102,14 +35,15 @@ public class Fitness {
 			
 			//quantidade de elementos que sao dominados pelo individuo(streng)
 			for(Chromossomo c2: population) {
-				if(c1.getFunction1() >= c2.getFunction1() &&
-						c1.getFunction2() >= c2.getFunction2()) {
+				if(spea.dominateOther(c1, c2)) {
 					myStrenght++;
 				}
 			}
-			c1.setRawFitness(Float.valueOf(myStrenght));
+			c1.setStrenght(Float.valueOf(myStrenght));
 		}
 	}
+	
+	
 	
 	/**
 	 * calcula o raw fitnes e distancia, soma e gera o fitness
@@ -126,7 +60,7 @@ public class Fitness {
 			 	float rawFitness = 0;
 				//quantidade que domimam(rawfitness)
 				for(Chromossomo c2: population) {
-					if(c2.getFunction1() >= c1.getFunction1() && c2.getFunction2() >= c1.getFunction2()) {
+					if(spea.dominateOther(c2, c1)) {
 						rawFitness += c2.getStrenght(); 
 					}
 				}
@@ -136,7 +70,7 @@ public class Fitness {
 				Double kth = 0.0d;
 				int kthDistance = (int) Math.floor(Math.sqrt(population.size()+archive.size()));
 				List<Double> list = Arrays.asList(distance[x]);
-				Collections.sort(list);
+				Collections.sort(list, Collections.reverseOrder());
 				
 				int counter = 0;
 				for (Double dis : list) {
@@ -144,14 +78,22 @@ public class Fitness {
 					if (counter == kthDistance) {
 						kth = dis;
 						break;
+					}
 				}
 				
-				c1.setDensity((float) (1 / (kth + 2)));	
+				c1.setDensity((float) (1.0 / (kth + 2)));	
 				c1.setFitness(c1.getRawFitness() + c1.getDensity());
-			}
 		 }
 	}
 	
+	public void calculateFitnessSpea2(List<Chromossomo> population, List<Chromossomo> archive, Integer classAg) {
+		
+		for(Chromossomo chromoAleatorio: population) {
+			calculateFitness(chromoAleatorio, classAg);
+		}
+		calculateStrenght(population);
+		calculateRawDistanceFit(population, archive);
+	}
 	/**
 	 * calcula a distancia euclidiana entre dois elementos utilizando f1 e f2
 	 * 
@@ -163,17 +105,22 @@ public class Fitness {
 			Double[][] distances = new Double[population.size()][population.size()];
 			for (int y = 0; y < population.size(); y++) {
 				distances[y][y] = 0.0d;
+				
 				for (int z = y + 1; z < population.size(); z++) {
 					
 					Chromossomo cy = population.get(y);
 					Chromossomo cz = population.get(z);
 					
-					distances[z][y] = distances[y][z] = (double) (((cy.getFunction1() - cz.getFunction1()) * (cy.getFunction1() - cz.getFunction1())) +
-							((cy.getFunction2() - cz.getFunction2()) + (cy.getFunction2() - cz.getFunction2())));
+					Double d1 = (double) ((cy.getFunction1() - cz.getFunction1()) * (cy.getFunction1() - cz.getFunction1()));
+					Double d2 = (double) ((cy.getFunction2() - cz.getFunction2()) * (cy.getFunction2() - cz.getFunction2()));
+					
+					distances[z][y] = distances[y][z] = (double) Math.sqrt(d1+d2);
 				}
 			}
 			return distances;
 	}
+	
+	
 	
 	public void calculateFitness(Chromossomo chromoAleatorio, Integer classAG) {
 		
@@ -210,34 +157,39 @@ public class Fitness {
 		Float fitness = se * sp;
 
 		if(fitness == 0) {
-			fitness = 0.01f;
+			fitness = 0.00f;
 		}
 		
 		chromoAleatorio.setFunction1(fitness);
-		chromoAleatorio.setFunction2(calcAcurracy(classAG, truePositive));
+		//tp + tn / (tp +fp+ fn+ true)
+		Float acc= (float) ((truePositive + trueNegative) / Float.valueOf((truePositive + falsePositive + falseNegative + trueNegative)));
+		chromoAleatorio.setFunction2(acc);
+		//chromoAleatorio.setFunction2(calcAcurracy(classAG, truePositive, trueNegative));
 	}
 	
-	public Float calcAcurracy(Integer claz, Integer truePositive) {
+	public Float calcAcurracy(Integer claz, Integer truePositive,Integer trueNegative) {
 		
+		
+		// 
 		Float accuracy = 0.0f;
 		switch (claz) {
 		case 1:
-			accuracy = Float.valueOf(truePositive / AlgoritGenetic.classOne.size());
+			accuracy = Float.valueOf( (truePositive+trueNegative)  / AlgoritGenetic.trainingDiseae.size());
 			break;
 		case 2:
-			accuracy = Float.valueOf(truePositive / AlgoritGenetic.classTwo.size());
+			accuracy = Float.valueOf((truePositive+trueNegative) / AlgoritGenetic.trainingDiseae.size());
 			break;
 		case 3:
-			accuracy = Float.valueOf(truePositive / AlgoritGenetic.classThree.size());
+			accuracy = Float.valueOf((truePositive+trueNegative) / AlgoritGenetic.trainingDiseae.size());
 			break;
 		case 4:
-			accuracy = Float.valueOf(truePositive / AlgoritGenetic.classFour.size());
+			accuracy = Float.valueOf((truePositive+trueNegative) / AlgoritGenetic.trainingDiseae.size());
 			break;
 		case 5:
-			accuracy = Float.valueOf(truePositive / AlgoritGenetic.classFive.size());
+			accuracy = Float.valueOf((truePositive+trueNegative) / AlgoritGenetic.trainingDiseae.size());
 			break;
 		case 6:
-			accuracy = Float.valueOf(truePositive / AlgoritGenetic.classSix.size());
+			accuracy = Float.valueOf((truePositive+trueNegative) / AlgoritGenetic.trainingDiseae.size());
 			break;
 		default:
 			break;

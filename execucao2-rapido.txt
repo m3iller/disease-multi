@@ -1,0 +1,61 @@
+Tempo Execucao:0.0
+Classe: 1
+id: 2687
+thinning >= 1| 0.84
+spongiosis < 1| 0.88
+bandLike < 3| 1.0
+age != 31| 0.95
+Fit:0.334183F1:0.95F2:0.9836066
+
+ 
+Tempo Execucao:18.938
+Classe: 2
+id: 5527
+pnlInfiltrate >= 1| 0.90999997
+elongation < 1| 0.87
+munroIcroabcess < 1| 0.95000005
+disappearance = 0| 0.87
+Fit:484.3811F1:0.6174F2:0.9221311
+
+ 
+Tempo Execucao:19.613
+Classe: 3
+id: 7084
+pnlInfiltrate < 1| 0.8
+bandLike >= 2| 0.87
+Fit:0.33229703F1:0.99F2:0.99590164
+
+ 
+Tempo Execucao:16.291
+Classe: 4
+id: 11444
+itching < 3| 0.94
+koebnerPhenomenon >= 1| 0.96
+melaninIncontinence < 1| 0.85
+exocytosis >= 1| 0.82
+spongiform != 2| 0.8
+disappearance < 3| 0.96
+vacuolisation != 3| 0.92
+bandLike = 0| 0.91
+Fit:100.36224F1:0.7566F2:0.9467213
+
+ 
+Tempo Execucao:22.307
+Classe: 5
+id: 13213
+oralMucosalInvolvement < 1| 0.85999995
+fibrosis != 0| 0.88
+Fit:0.33219993F1:1.0F2:1.0
+
+ 
+Tempo Execucao:19.597
+Classe: 6
+id: 14826
+kneeElbowInvolvement != 0| 1.0
+perifollicular != 0| 0.8
+Fit:0.3328832F1:1.0F2:1.0
+
+ 
+
+
+ 
