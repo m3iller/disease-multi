@@ -7,7 +7,7 @@ import java.util.Random;
 import com.ufu.disease.ag.AlgoritGenetic;
 import com.ufu.disease.ag.Fitness;
 
-public class Chromossomo {
+public class Chromossomo implements Cloneable {
 	
 	public Chromossomo() {
 		this.erythema = new Gene();
@@ -427,7 +427,11 @@ public class Chromossomo {
 	@Override
 	public String toString() {
 		return " ID: " + idDermatology +
-				" Fitness:" + this.getFunction1();
+				" Fitness:" + this.getFitness() +
+				" F1:" + this.getFunction1() +
+		        " F2:" + this.getFunction2() +
+		        " Raw:" + this.getRawFitness() +
+		        " densit:" + this.getDensity();
 	}
 	
 	public static void printChromossomo(Chromossomo c) {
@@ -462,4 +466,8 @@ public class Chromossomo {
 			System.err.println(e.getMessage());
 		}
 	}
+	
+	public Chromossomo clone() throws CloneNotSupportedException {
+        return (Chromossomo) super.clone();
+    }
 }

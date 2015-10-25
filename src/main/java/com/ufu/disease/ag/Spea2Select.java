@@ -23,7 +23,7 @@ public class Spea2Select {
 	}
 
 	public double[] calculateDistancesFromChromossomo(Chromossomo ind,List<Chromossomo> inds) {
-		double[] d = new double[inds.size()];
+		double[] d = new double[inds.size()+1];
 		int i=0;
 		for(Chromossomo c1: inds) {
 			Double d1 = (double) ((ind.getFunction1() - c1.getFunction1()) * (ind.getFunction1() - c1.getFunction1()));
@@ -35,22 +35,21 @@ public class Spea2Select {
 	}
 	
 	
-	 public void speaSelection(List<Chromossomo> oldInds, List<Chromossomo> newInds, List<Chromossomo> archives) throws CloneNotSupportedException {
+	 public void speaSelection(List<Chromossomo> oldInds, List<Chromossomo> newInds, List<Chromossomo> archive) throws CloneNotSupportedException {
              
 	 //int archiveSize= archives.size();
 	 int archiveSize= Fitness.TAMANHO_ARCHIVE;
-     // step 1: load the archive with the pareto-nondominated front
-     List<Chromossomo> archive = new ArrayList<Chromossomo>();
+     //List<Chromossomo> archive = new ArrayList<Chromossomo>();
      List<Chromossomo> nonFront = new ArrayList<Chromossomo>();
      
+     // pegar melhores elementos 
      partitionIntoParetoFront(oldInds, archive, nonFront);
      int currentArchiveSize = archive.size();
              
-     // step 2: if the archive isn't full, load the remainder with the fittest Chromossomos (using customFitnessMetric) that aren't in the archive yet
+     // colocar os melhore chromossos para preencher 
      if (currentArchiveSize < archiveSize)
          {
-         Collections.sort(nonFront, new ChromossomoComparator());  // the fitter Chromossomos will be earlier
-         //Collections.sort(list, Collections.reverseOrder());
+         Collections.sort(nonFront, new ChromossomoComparator());  
          int len = (archiveSize - currentArchiveSize);
          for(int i = 0; i < len; i++)
              {
@@ -58,34 +57,42 @@ public class Spea2Select {
              currentArchiveSize++;
              }
          }
-      // step 3: if the archive is OVERFULL, iterate as follows:
-     //              step 3a: remove the k-closest Chromossomo in the archive
+      //  remover kezimos individuos
+		while (currentArchiveSize > archiveSize) {
+			Chromossomo closest = (Chromossomo) (archive.get(0));
+			int closestIndex = 0;
+			double[] closestD = calculateDistancesFromChromossomo(closest,
+					oldInds);
 
-     while(currentArchiveSize > archiveSize)
-         {
-         Chromossomo closest = (Chromossomo)(archive.get(0));
-         int closestIndex = 0;
-         double[] closestD = calculateDistancesFromChromossomo(closest, oldInds);
-                     
-         for(int i = 1; i < currentArchiveSize; i++)
-             {
-             Chromossomo competitor = (Chromossomo)(archive.get(i));
-             double[] competitorD = calculateDistancesFromChromossomo(competitor, oldInds);
-                             
-             for(int k = 0; k < oldInds.size(); k++)
-                 {
-                 if (closestD[i] > competitorD[i])
-                     { closest = competitor ; closestD = competitorD;  closestIndex = k; break; }
-                 else if (closestD[i] < competitorD[i])
-                     { break; }
-                 }
-             }
-                     
-         // remove him destructively -- put the top guy in his place and remove the top guy.  This is O(1)
-         archive.set(closestIndex, archive.get(archive.size()-1));
-         archive.remove(archive.size()-1);
-                     
-         currentArchiveSize--;
+			int i = 0;
+			for (Chromossomo competitor : archive) {
+				i++;
+				if (i == 0) { //ignora primeiro elemento
+					continue;
+				}
+				double[] competitorD = calculateDistancesFromChromossomo(
+						competitor, oldInds);
+
+				for (int k = 0; k < oldInds.size(); k++) {
+					//System.out.println( " | " + i);
+					if (closestD[i] > competitorD[i]) {
+						closest = competitor;
+						closestD = competitorD;
+						closestIndex = k;
+						break;
+					} else if (closestD[i] < competitorD[i]) {
+						break;
+					}
+				}
+				if(i == 49) {
+					break;
+				}
+			}
+
+			archive.set(closestIndex, archive.get(archive.size() - 1));
+			archive.remove(archive.size() - 1);
+
+			currentArchiveSize--;
          }
                                              
      // step 4: put clones of the archive in the new Chromossomos
@@ -93,10 +100,6 @@ public class Spea2Select {
     	 newInds.add(c.clone());
      }
      
-//     	Object[] obj = archive.toArray();
-//     	for(int i = 0; i < archiveSize; i++) {
-//     		//newInds[newInds.length - archiveSize + i] = (Chromossomo)(((Chromossomo)obj[i]).clone());
-//     	}
      }
 	 
 	 /**

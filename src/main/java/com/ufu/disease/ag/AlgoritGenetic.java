@@ -55,16 +55,16 @@ public class AlgoritGenetic {
 			TournamentStocastic tournament = new TournamentStocastic();
 			Spea2Select spea2 = new Spea2Select();
 			
+			List<Chromossomo> nextGeneration = new ArrayList<Chromossomo>();
 			
 			for (int j = 1; j <= generation; j++) {
 				
 				f.calculateFitnessSpea2(popupalcao, archive,classAg);
-				
 				Collections.sort(popupalcao, new ChromossomoComparator());
 				popupalcao = popupalcao.subList(0, 49);
 				
 				Collections.sort(popupalcao, new ChromossomoComparator());
-				List<Chromossomo> nextGeneration = new ArrayList<Chromossomo>();
+				nextGeneration = new ArrayList<Chromossomo>();
 				spea2.speaSelection(popupalcao, nextGeneration, archive);
 				
 				List<Chromossomo> tourElements = tournament.spea2TournamentTimes(nextGeneration,sizeTournament, 25,classAg);
