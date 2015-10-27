@@ -86,10 +86,10 @@ public class Fitness {
 		 }
 	}
 	
-	public void calculateFitnessSpea2(List<Chromossomo> population, List<Chromossomo> archive, Integer classAg) {
+	public void calculateFitnessSpea2(List<Chromossomo> population, List<Chromossomo> archive, Integer classAg,List<Chromossomo> training) {
 		
 		for(Chromossomo chromoAleatorio: population) {
-			calculateFitness(chromoAleatorio, classAg);
+			calculateFitness(chromoAleatorio, classAg,training);
 		}
 		calculateStrenght(population);
 		calculateRawDistanceFit(population, archive);
@@ -122,14 +122,15 @@ public class Fitness {
 	
 	
 	
-	public void calculateFitness(Chromossomo chromoAleatorio, Integer classAG) {
+	public void calculateFitness(Chromossomo chromoAleatorio, Integer classAG,
+			List<Chromossomo> trainingDisease) {
 		
 		int truePositive = 0;
 		int falsePositive = 0;
 		int falseNegative = 0;
 		int trueNegative = 0;
 
-		for (Chromossomo c : AlgoritGenetic.trainingDiseae) {
+		for (Chromossomo c : trainingDisease) {
 			// verifica se atributos sao equivalentes
 			boolean compareValues = functionCompare(c, chromoAleatorio);
 			if (compareValues) {
@@ -167,37 +168,6 @@ public class Fitness {
 		//chromoAleatorio.setFunction2(calcAcurracy(classAG, truePositive, trueNegative));
 	}
 	
-	public Float calcAcurracy(Integer claz, Integer truePositive,Integer trueNegative) {
-		
-		
-		// 
-		Float accuracy = 0.0f;
-		switch (claz) {
-		case 1:
-			accuracy = Float.valueOf( (truePositive+trueNegative)  / AlgoritGenetic.trainingDiseae.size());
-			break;
-		case 2:
-			accuracy = Float.valueOf((truePositive+trueNegative) / AlgoritGenetic.trainingDiseae.size());
-			break;
-		case 3:
-			accuracy = Float.valueOf((truePositive+trueNegative) / AlgoritGenetic.trainingDiseae.size());
-			break;
-		case 4:
-			accuracy = Float.valueOf((truePositive+trueNegative) / AlgoritGenetic.trainingDiseae.size());
-			break;
-		case 5:
-			accuracy = Float.valueOf((truePositive+trueNegative) / AlgoritGenetic.trainingDiseae.size());
-			break;
-		case 6:
-			accuracy = Float.valueOf((truePositive+trueNegative) / AlgoritGenetic.trainingDiseae.size());
-			break;
-		default:
-			break;
-		}
-		
-		return accuracy;
-	}
-
 	public boolean functionCompare(Chromossomo chromoOriginal,
 			Chromossomo chromoAleatory) {
 

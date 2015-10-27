@@ -38,7 +38,7 @@ public class FitnessTest {
 		AlgoritGenetic.initTesteList();
 		
 		Fitness fit = new Fitness();
-		fit.calculateFitness(c,1);
+		//fit.calculateFitness(c,1);
 		
 		Assert.assertNotNull(c);
 	}

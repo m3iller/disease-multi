@@ -6,7 +6,7 @@
 	<groupId>com.ufu.disease</groupId>
 	<artifactId>disease</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>disease</name>
+	<name>disease-multi</name>
 	<dependencies>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -31,6 +31,6 @@
 
 	</dependencies>
 	<build>
-		<finalName>disease</finalName>
+		<finalName>disease-multi</finalName>
 	</build>
 </project>

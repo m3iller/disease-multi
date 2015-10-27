@@ -6,46 +6,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import org.omg.CORBA.OBJ_ADAPTER;
-
 import com.ufu.disease.to.Chromossomo;
 import com.ufu.disease.to.ChromossomoComparator;
 import com.ufu.disease.to.Gene;
 import com.ufu.disease.to.Operator;
 
 
-public class TournamentStocastic {
-
-	public List<Chromossomo> tournamentStocastic(List<Chromossomo> populacao, int size){
-			List<Chromossomo> chromoSelected = new ArrayList<Chromossomo>();
-			for(int i=1;i<=size;i++) {
-				Float tempSum = 0.0f;
-				Float maxFit = 0.0f;
-				for(Chromossomo c: populacao) {
-					maxFit = c.getFunction1() + c.getFunction2();
-				}
-				for(Chromossomo c: populacao) {
-					double randomNum = Math.random()*maxFit;
-					if(c.getFunction1() != null) {
-					tempSum += c.getFunction1() + c.getFunction2();
-						if(tempSum > randomNum) {
-							if(chromoSelected.contains(c)) {
-								continue;
-							} else {
-								chromoSelected.add(c);
-							}
-							break;
-						}
-					} else {
-						System.out.println("Fitness esta null:" + c);
-					}
-				}
-			}
-			
-			Collections.sort(chromoSelected, new ChromossomoComparator());
-			return chromoSelected;
-	}
-	
+public class Tournament {
 
 	public List<Chromossomo> tournamentBinary(List<Chromossomo> populacao) {
 			List<Chromossomo> chromoSelected = new ArrayList<Chromossomo>();
@@ -53,7 +20,6 @@ public class TournamentStocastic {
 			
 			int r1 = r.nextInt((populacao.size() - 1) + 1) ;
 			int r2 = r.nextInt((populacao.size() - 1) + 1) ;
-			
 			
 			Chromossomo c1 = populacao.get(r1);
 			Chromossomo c2 = populacao.get(r2);
@@ -116,49 +82,7 @@ public class TournamentStocastic {
 	}
 	
 	
-	public List<Chromossomo> tournamentTimes(List<Chromossomo> populacao, int size,int vezes, int geracao) {
-		
-		List<Chromossomo> torneiosElement = new ArrayList<Chromossomo>();
-		for(int k=0;k <=vezes;k++) {
-		
-			List<Chromossomo> chromoSelected = new ArrayList<Chromossomo>();
-			List<Chromossomo> chromoSelected1 = tournamentStocastic(populacao, size);
-			List<Chromossomo> chromoSelected2 = tournamentStocastic(populacao, size);
-			
-			if(chromoSelected1.size() >0 && chromoSelected1.get(0) != null
-					&& chromoSelected2.size()>1 && chromoSelected2.get(1) != null) {
-				
-			chromoSelected.add(chromoSelected1.get(0));
-			if(chromoSelected2.get(0).equals(chromoSelected1.get(0))) {
-				chromoSelected.add(chromoSelected2.get(1));
-			} else {
-				chromoSelected.add(chromoSelected2.get(0));
-			}
-			CrossOver cross =new CrossOver();
-			
-			try {
-				
-				Chromossomo c1 =  cross.crossOver(chromoSelected.get(0), chromoSelected.get(1));
-				Chromossomo c2 =  cross.crossOver(chromoSelected.get(1), chromoSelected.get(0));
-				
-				torneiosElement.add(c1);
-				torneiosElement.add(c2);
-				
-				mutation(c1,30);
-				mutation(c2,30);
-				
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			}
-		
-		} else {
-			System.out.println("tem gente nulo ai max fit:");
-		}
-		}
-		return torneiosElement;
-	}
+	
 
 	private void mutation(Chromossomo c1, int porcentage) throws IllegalAccessException {
 		Field[] fiields = c1.getClass().getDeclaredFields();
