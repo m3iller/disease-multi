@@ -2,8 +2,10 @@ package com.ufu.disease.ag;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import com.ufu.disease.dao.DermatologyDAO;
 import com.ufu.disease.to.Chromossomo;
@@ -47,52 +49,43 @@ public class AlgoritGenetic {
 		createValidateList();
 		for (int classAg = 1; classAg <= 6; classAg++) {
 			
-			Float tempo = ((end - init) / 1000f);
 			init = System.currentTimeMillis();
-			System.out.println("Tempo Execucao:" + tempo);
 			List<Chromossomo> popupalcao = createPopulation();
-			List<Chromossomo> archive = new ArrayList<Chromossomo>();
+			Set<Chromossomo> archive = new HashSet<Chromossomo>();
 			
 			Fitness f = new Fitness();
 			Tournament tournament = new Tournament();
 			Spea2Select spea2 = new Spea2Select();
 			
-			List<Chromossomo> nextGeneration = new ArrayList<Chromossomo>();
-			
 			for (int j = 1; j <= generation; j++) {
+				List<Chromossomo> nextGeneration = new ArrayList<Chromossomo>();
 				
 				f.calculateFitnessSpea2(popupalcao, archive,classAg, trainingDiseae);
 				Collections.sort(popupalcao, new ChromossomoComparator());
 				popupalcao = popupalcao.subList(0, 49);
 				
 				nextGeneration = new ArrayList<Chromossomo>();
-				spea2.speaSelection(popupalcao, nextGeneration, archive);
+				spea2.speaSelection(popupalcao, archive, nextGeneration);
 				
-				List<Chromossomo> tourElements = tournament.spea2TournamentTimes(nextGeneration,sizeTournament, 25,classAg);
-				
+				List<Chromossomo> tourElements = tournament.spea2TournamentTimes(popupalcao,sizeTournament, 25,classAg);
 				popupalcao.addAll(tourElements);
 				
-				archive = new ArrayList<Chromossomo>();
-				archive.addAll(nextGeneration);
-				Collections.sort(archive, new ChromossomoComparator());
-				if(archive.size() > 49) {
-					archive.subList(0, 49);
-				}
 			}
-			
-			Collections.sort(nextGeneration, new ChromossomoComparator());
+			//f.calculateFitnessSpea2(popupalcao, archive,classAg, trainingDiseae);
+			//Collections.sort(popupalcao, new ChromossomoComparator());
+			Float tempo = ((System.currentTimeMillis() - init) / 1000f);
+			System.out.println("Tempo Execucao:" + tempo);
 			System.out.println("Classe: " + classAg);
-			Chromossomo.printChromossomo(nextGeneration.get(0));
-			validateClass(nextGeneration.get(0), classAg);
-			end = System.currentTimeMillis();
+			
+			filtraParetoDisferentes(archive);
+			//Chromossomo.printChromossomo(popupalcao.get(0));
+		
 		}
 	}
 	public static void validateClass(Chromossomo winner, Integer classAg) {
 		Fitness f = new Fitness();
-		
 		f.calculateFitness(winner, classAg, validateDiseae);
 		System.out.println("Testando Fit: f1:" + winner.getFunction1() + " f2:" + winner.getFunction2()) ;
-		
 	}
 	
 	public static void createValidateList() {
@@ -106,7 +99,6 @@ public class AlgoritGenetic {
 	}
 	
 	public static void initTesteList() {
-		
 		classOne = dao.searchDermtology(74, 1);
 		classTwo = dao.searchDermtology(40, 2);
 		classThree = dao.searchDermtology(49, 3);
@@ -122,6 +114,13 @@ public class AlgoritGenetic {
 		trainingDiseae.addAll(classFour);
 		trainingDiseae.addAll(classFive);
 		trainingDiseae.addAll(classSix);
+	}
+	
+	public static void filtraParetoDisferentes(Set<Chromossomo> pareto) {
+		
+		for(Chromossomo c: pareto) {
+			Chromossomo.printChromossomo(c);
+		}
 	}
 	
 }

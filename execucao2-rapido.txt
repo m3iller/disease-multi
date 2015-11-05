@@ -10,70 +10,63 @@ Testando Fit: f1:0.96 f2:0.97540987
 Tempo Execucao:21.361
 
 
+Tempo Execucao:23.941
 Classe: 2
-id: 3699
-erythema >= 1| 0.9
-scaling >= 2| 0.8
-kneeElbowInvolvement < 0| 1.0
-familyHistory != 0| 0.8
-pnlInfiltrate != 0| 1.0
-acanthosis < 1| 1.0
-elongation = 0| 0.9
-spongiform >= 1| 1.0
-inflammatory < 1| 0.8
-Fit:0.5F1:0.0F2:0.8360656
+id: 3504
+koebnerPhenomenon = 0| 0.91
+oralMucosalInvolvement = 0| 0.98
+melaninIncontinence = 0| 0.94
+spongiosis >= 2| 0.89
+sawYooth >= 0| 0.99
+follicular < 2| 0.86
+Fit:100.35298F1:0.8245F2:0.9508197
+Testando Fit: f1:0.874 f2:0.92622954
 
  
 Testando Fit: f1:0.0 f2:0.8278689
 Tempo Execucao:16.206
 Classe: 3
 id: 8175
-pnlInfiltrate < 2| 0.84999996
-sawYooth >= 1| 0.8
-inflammatory >= 0| 0.8
-classDisease < 3| 0.9
-Fit:0.33454475F1:0.9702F2:0.9918033
-Testando Fit: f1:1.0 f2:1.0
+scalpInvolvement < 1 
+bandLike >= 2
+Fit:0.33454475 F1:1 F2:1
+Testando Fit: f1:0.91 f2:0.98
 Tempo Execucao:17.182
 
 
+Tempo Execucao:21.139
 Classe: 4
-id: 11490
-koebnerPhenomenon >= 1| 0.9
-fibrosis >= 0| 1.0
-hyperkeratosis = 0| 0.8
-clubbing != 2| 1.0
-spongiform != 3| 0.9
-focalHypergranulosis < 2| 1.0
-vacuolisation != 3| 0.9
-bandLike != 1| 0.88
-Fit:0.3929169F1:0.5432F2:0.9139344
-Testando Fit: f1:0.779 f2:0.93442625
-Tempo Execucao:16.26
+id: 3487
+koebnerPhenomenon != 0| 0.8
+melaninIncontinence < 2| 0.9
+spongiosis >= 1| 0.9
+Fit:0.3661353F1:0.7275F2:0.94262296
+Testando Fit: f1:0.82 f2:0.97540987
 
 
+Tempo Execucao:29.264
 Classe: 5
-id: 11646
-scaling < 2| 1.0
-itching < 1| 0.9
-koebnerPhenomenon >= 2| 0.8
-polygonalPapules != 1| 0.9
-follicularPapules < 1| 0.9
-thinning < 3| 0.8
-follicular = 2| 0.8
-inflammatory >= 0| 0.8
-Fit:97.5F1:0.0F2:0.85655737
-Testando Fit: f1:0.0 f2:0.8606557
-Tempo Execucao:22.471
+id: 3215
+polygonalPapules < 2| 0.85999995
+kneeElbowInvolvement < 2| 0.89
+fibrosis >= 1| 0.95
+parakeratosis < 3| 1.0
+follicular < 3| 0.87999994
+Fit:0.33219993F1:1.0F2:1.0
+Testando Fit: f1:1.0 f2:1.0
 
 
+
+Tempo Execucao:19.714
 Classe: 6
-id: 16491
-koebnerPhenomenon != 1| 0.9
-follicularPapules >= 1| 0.95
-parakeratosis >= 1| 1.0
-vacuolisation != 1| 0.96
-perifollicular >= 1| 0.86
-age < 75| 0.86999995
-Fit:0.33315068F1:1.0F2:1.0
-Testando Fit: f1:0.67 f2:0.9836066
+id: 2155
+melaninIncontinence != 2| 0.91999996
+clubbing >= 0| 0.8
+elongation < 2| 0.9
+spongiosis >= 0| 0.9
+perifollicular != 0| 0.8
+inflammatory >= 0| 1.0
+Fit:0.3331758F1:1.0F2:0.99590164
+
+ 
+Testando Fit: f1:1.0 f2:1.0

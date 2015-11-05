@@ -94,6 +94,7 @@ public class Chromossomo implements Cloneable {
 	
 	private Float function1;
 	private Float function2;
+	private Float function3;
 	private Float rawFitness;
 	private Float strenght;
 	private Float density;
@@ -327,6 +328,12 @@ public class Chromossomo implements Cloneable {
 	public void setFunction2(Float function2) {
 		this.function2 = function2;
 	}
+	public Float getFunction3() {
+		return function3;
+	}
+	public void setFunction3(Float function3) {
+		this.function3 = function3;
+	}
 	public Float getRawFitness() {
 		return rawFitness;
 	}
@@ -430,37 +437,48 @@ public class Chromossomo implements Cloneable {
 				" Fitness:" + this.getFitness() +
 				" F1:" + this.getFunction1() +
 		        " F2:" + this.getFunction2() +
+		        " F3:" + this.getFunction3() +
 		        " Raw:" + this.getRawFitness() +
 		        " densit:" + this.getDensity();
 	}
 	
 	public static void printChromossomo(Chromossomo c) {
+		StringBuilder sb = new StringBuilder();
 		try {
-			System.out.println("id: " + c.getIdDermatology());
+			//System.out.println("id: " + c.getIdDermatology());
 			for (Field field : c.getClass().getDeclaredFields()) {
 				field.setAccessible(true); 
 											
 				Object o = field.get(c);
 				if (o instanceof Gene) {
+					
 					o = (Gene) o;
+					if (field.getName().equals("age") || field.getName().equals("classDisease")) {
+						continue;
+					}
 					Gene value = (Gene) field.get(c);
 					if (value != null && value.getWeigth() != null
 							&& value.getWeigth() >= Fitness.threshold) {
 						if (field.getName().equals("idDermatology")) {
-							System.out.println(field.getName() + " "
-									+ value.getOperator() + " "
-									+ value.getValue() + "| "
-									+ value.getWeigth());
+//							System.out.println(field.getName() + " "
+//									+ value.getOperator() + "  "
+//									+ value.getValue());
+							//sb.append(field.getName() + " " + value.getOperator() + "  " + value.getValue());
+							//sb.append(" | ");
+									
 						} else {
-							System.out.println(field.getName() + " "
-									+ value.getOperator().getNumVal() + " "
-									+ value.getValue() + "| "
-									+ value.getWeigth());
+//							System.out.println(field.getName() + " "
+//									+ value.getOperator().getNumVal() + "  "
+//									+ value.getValue());
+//							
+							sb.append(field.getName() + " " + value.getOperator().getNumVal() + "  " + value.getValue());
+							sb.append(" and ");
 						}
 					}
 				}
 			}
-			System.out.println("Fit:" + c.getFitness()  + "F1:" + c.getFunction1() + "F2:" + c.getFunction2());
+			System.out.println(sb.toString());
+			System.out.println(" Fit:" + c.getFitness()  + " F1: " + c.getFunction1() + " F2: " + c.getFunction2() + " F3: " + c.getFunction3());
 			System.out.println("\n ");
 		} catch (Exception e) {
 			System.err.println(e.getMessage());

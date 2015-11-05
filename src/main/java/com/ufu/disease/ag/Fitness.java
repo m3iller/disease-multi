@@ -3,6 +3,7 @@ package com.ufu.disease.ag;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import com.udojava.evalex.Expression;
 import com.ufu.disease.to.Chromossomo;
@@ -16,7 +17,7 @@ import com.ufu.disease.to.Gene;
  */
 public class Fitness {
 
-	public static Integer TAMANHO_ARCHIVE = 49;
+	public static Integer TAMANHO_ARCHIVE = 30;
 	public static Float threshold = 0.80f;
 	private Double distance[][];
 
@@ -50,7 +51,7 @@ public class Fitness {
 	 * 
 	 * @param population
 	 */
-	public void calculateRawDistanceFit(List<Chromossomo> population,List<Chromossomo> archive) {
+	public void calculateRawDistanceFit(List<Chromossomo> population,Set<Chromossomo> archive) {
 		
 		// cria um mapa com as distancias
 		 distance = calcDistanceEucli(population);
@@ -86,7 +87,7 @@ public class Fitness {
 		 }
 	}
 	
-	public void calculateFitnessSpea2(List<Chromossomo> population, List<Chromossomo> archive, Integer classAg,List<Chromossomo> training) {
+	public void calculateFitnessSpea2(List<Chromossomo> population, Set<Chromossomo> archive, Integer classAg,List<Chromossomo> training) {
 		
 		for(Chromossomo chromoAleatorio: population) {
 			calculateFitness(chromoAleatorio, classAg,training);
@@ -129,10 +130,11 @@ public class Fitness {
 		int falsePositive = 0;
 		int falseNegative = 0;
 		int trueNegative = 0;
-
+		int tamanhoRegra = 0;
+			
 		for (Chromossomo c : trainingDisease) {
 			// verifica se atributos sao equivalentes
-			boolean compareValues = functionCompare(c, chromoAleatorio);
+			boolean compareValues = functionCompare(c, chromoAleatorio,tamanhoRegra);
 			if (compareValues) {
 				if (c.getClassDisease().getValue().intValue() == classAG.intValue()) {
 					++truePositive;
@@ -147,6 +149,8 @@ public class Fitness {
 				}
 			}
 		}
+		
+		//chromoAleatorio.setFunction3(tamanhoRegra);
 		
 		Float se  = truePositive / 
 				Float.valueOf((truePositive + falseNegative));
@@ -169,234 +173,245 @@ public class Fitness {
 	}
 	
 	public boolean functionCompare(Chromossomo chromoOriginal,
-			Chromossomo chromoAleatory) {
+			Chromossomo chromoAleatory, int tamanhoRegra) {
 
 		boolean compareElements = false;
+		Boolean existeUmfalse = null;
+		
 		if (chromoAleatory.getErythema().getWeigth() >= threshold) {
 			compareElements = compareExpression(chromoOriginal.getErythema(),
 					chromoAleatory.getErythema());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getScaling().getWeigth() >= threshold) {
 			compareElements = compareExpression(chromoOriginal.getScaling(),
 					chromoAleatory.getScaling());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getDefiniteBorders().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getDefiniteBorders(),
 					chromoAleatory.getDefiniteBorders());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getItching().getWeigth() >= threshold) {
 			compareElements = compareExpression(chromoOriginal.getItching(),
 					chromoAleatory.getItching());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getKoebnerPhenomenon().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getKoebnerPhenomenon(),
 					chromoAleatory.getKoebnerPhenomenon());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getPolygonalPapules().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getPolygonalPapules(),
 					chromoAleatory.getPolygonalPapules());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getFollicularPapules().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getFollicularPapules(),
 					chromoAleatory.getFollicularPapules());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getOralMucosalInvolvement().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getOralMucosalInvolvement(),
 					chromoAleatory.getOralMucosalInvolvement());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getKneeElbowInvolvement().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getKneeElbowInvolvement(),
 					chromoAleatory.getKneeElbowInvolvement());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getScalpInvolvement().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getScalpInvolvement(),
 					chromoAleatory.getScalpInvolvement());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getFamilyHistory().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getFamilyHistory(),
 					chromoAleatory.getFamilyHistory());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getMelaninIncontinence().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getMelaninIncontinence(),
 					chromoAleatory.getMelaninIncontinence());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getEosinophils().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getEosinophils(),
 					chromoAleatory.getEosinophils());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getPnlInfiltrate().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getPnlInfiltrate(),
 					chromoAleatory.getPnlInfiltrate());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getFibrosis().getWeigth() >= threshold) {
 			compareElements = compareExpression(chromoOriginal.getFibrosis(),
 					chromoAleatory.getFibrosis());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getExocytosis().getWeigth() >= threshold) {
 			compareElements = compareExpression(chromoOriginal.getExocytosis(),
 					chromoAleatory.getExocytosis());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getAcanthosis().getWeigth() >= threshold) {
 			compareElements = compareExpression(chromoOriginal.getAcanthosis(),
 					chromoAleatory.getAcanthosis());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getHyperkeratosis().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getHyperkeratosis(),
 					chromoAleatory.getHyperkeratosis());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getParakeratosis().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getParakeratosis(),
 					chromoAleatory.getParakeratosis());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getClubbing().getWeigth() >= threshold) {
 			compareElements = compareExpression(chromoOriginal.getClubbing(),
 					chromoAleatory.getClubbing());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getElongation().getWeigth() >= threshold) {
 			compareElements = compareExpression(chromoOriginal.getElongation(),
 					chromoAleatory.getElongation());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getThinning().getWeigth() >= threshold) {
 			compareElements = compareExpression(chromoOriginal.getThinning(),
 					chromoAleatory.getThinning());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getSpongiform().getWeigth() >= threshold) {
 			compareElements = compareExpression(chromoOriginal.getSpongiform(),
 					chromoAleatory.getSpongiform());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getMunroIcroabcess().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getMunroIcroabcess(),
 					chromoAleatory.getMunroIcroabcess());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getFocalHypergranulosis().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getFocalHypergranulosis(),
 					chromoAleatory.getFocalHypergranulosis());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getDisappearance().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getDisappearance(),
 					chromoAleatory.getDisappearance());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getVacuolisation().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getVacuolisation(),
 					chromoAleatory.getVacuolisation());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getSpongiosis().getWeigth() >= threshold) {
 			compareElements = compareExpression(chromoOriginal.getSpongiosis(),
 					chromoAleatory.getSpongiosis());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getSawYooth().getWeigth() >= threshold) {
 			compareElements = compareExpression(chromoOriginal.getSawYooth(),
 					chromoAleatory.getSawYooth());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getFollicular().getWeigth() >= threshold) {
 			compareElements = compareExpression(chromoOriginal.getFollicular(),
 					chromoAleatory.getFollicular());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getPerifollicular().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getPerifollicular(),
 					chromoAleatory.getPerifollicular());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getInflammatory().getWeigth() >= threshold) {
 			compareElements = compareExpression(
 					chromoOriginal.getInflammatory(),
 					chromoAleatory.getInflammatory());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getBandLike().getWeigth() >= threshold) {
 			compareElements = compareExpression(chromoOriginal.getBandLike(),
 					chromoAleatory.getBandLike());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
 		if (chromoAleatory.getAge().getWeigth() >= threshold) {
 			compareElements = compareExpression(chromoOriginal.getAge(),
 					chromoAleatory.getAge());
 			if (compareElements == false)
-				return false;
+				{ existeUmfalse = true; } tamanhoRegra++;
 		}
-	
-		return compareElements;
+		
+		chromoAleatory.setFunction3(Float.valueOf(tamanhoRegra));
+		
+		if(existeUmfalse!= null && existeUmfalse == true) {
+			return false;
+		} else if(existeUmfalse!= null && existeUmfalse == false){
+			return true;
+		} else {
+			return true;
+		}
+		//return compareElements;
 	}
 
 	public boolean compareExpression(Gene original, Gene aleatorio) {

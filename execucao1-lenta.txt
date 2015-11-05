@@ -1,69 +1,321 @@
-SPEA2
-
-Tempo Execucao:0.0
+[Console output redirected to file:/Users/miller/Mestrado/algoritmo-genetico/disease-multi/output.txt]
+Tempo Execucao:40.817
 Classe: 1
-id: 2027
-clubbing >= 1| 0.95
-spongiosis >= 0| 0.9
-follicular < 1| 0.97999996
-Fit:0.31389704F1:0.96F2:0.98770493
+itching !=  3 and fibrosis <  2 and focalHypergranulosis <  1 and spongiosis =  0 and 
+ Fit:3938.3574 F1: 0.7735 F2: 0.8893443 F3: 4.0
 
  
-Tempo Execucao:441.076
+exocytosis <  1 and thinning >=  1 and spongiosis =  0 and 
+ Fit:2786.366 F1: 0.7 F2: 0.90983605 F3: 3.0
+
+ 
+elongation !=  0 and spongiosis =  0 and 
+ Fit:5050.348 F1: 0.85 F2: 0.89344263 F3: 2.0
+
+ 
+definiteBorders >=  1 and itching !=  2 and follicularPapules <  2 and pnlInfiltrate !=  3 and spongiosis <  1 and inflammatory !=  2 and 
+ Fit:2515.4124 F1: 0.2852 F2: 0.7336066 F3: 6.0
+
+ 
+exocytosis <  3 and thinning >=  2 and focalHypergranulosis !=  1 and spongiosis =  0 and 
+ Fit:4005.3633 F1: 0.72 F2: 0.9139344 F3: 4.0
+
+ 
+itching !=  3 and fibrosis <  1 and focalHypergranulosis <  3 and spongiosis =  0 and 
+ Fit:4027.361 F1: 0.748 F2: 0.8729508 F3: 4.0
+
+ 
+scaling >=  0 and munroIcroabcess =  1 and spongiosis =  0 and 
+ Fit:2274.4153 F1: 0.3465 F2: 0.7991803 F3: 3.0
+
+ 
+exocytosis <  3 and thinning >=  1 and spongiosis =  0 and 
+ Fit:6161.334 F1: 0.95 F2: 0.9836066 F3: 3.0
+
+ 
+scaling >=  2 and itching !=  2 and exocytosis <  3 and follicular >=  0 and 
+ Fit:2329.4177 F1: 0.3825 F2: 0.72540987 F3: 5.0
+
+ 
+elongation !=  0 and spongiosis !=  1 and 
+ Fit:5115.3535 F1: 0.81 F2: 0.8647541 F3: 2.0
+
+ 
+erythema >=  0 and scalpInvolvement <  3 and familyHistory !=  1 and acanthosis >=  2 and hyperkeratosis !=  1 and munroIcroabcess !=  1 and focalHypergranulosis <  1 and 
+ Fit:1956.4342 F1: 0.1716 F2: 0.5409836 F3: 7.0
+
+ 
+exocytosis <  1 and spongiosis =  0 and 
+ Fit:3375.3687 F1: 0.6916 F2: 0.8647541 F3: 2.0
+
+ 
+definiteBorders !=  3 and koebnerPhenomenon !=  1 and scalpInvolvement !=  0 and thinning <  3 and disappearance !=  3 and spongiosis <  1 and follicular >=  0 and 
+ Fit:2187.4177 F1: 0.3069 F2: 0.7827869 F3: 8.0
+
+ 
+scaling >=  0 and definiteBorders !=  2 and hyperkeratosis !=  3 and munroIcroabcess =  1 and spongiosis =  0 and 
+ Fit:2666.4177 F1: 0.0891 F2: 0.72131145 F3: 5.0
+
+ 
+Tempo Execucao:44.802
 Classe: 2
-id: 6151
-koebnerPhenomenon = 0| 0.84999996
-melaninIncontinence = 0| 0.85
-eosinophils != 3| 0.8000001
-fibrosis < 3| 0.8
-spongiosis != 0| 0.81
-classDisease < 2| 0.96
-Fit:0.3503139F1:0.8008F2:0.9057377
+definiteBorders >=  1 and polygonalPapules !=  2 and scalpInvolvement <  3 and hyperkeratosis =  1 and clubbing !=  2 and elongation =  0 and thinning !=  1 and spongiosis <  3 and 
+ Fit:549.4028 F1: 0.0465 F2: 0.7827869 F3: 8.0
 
  
-Tempo Execucao:381.938
+vacuolisation <  1 and spongiosis >=  2 and inflammatory <  2 and 
+ Fit:1236.4117 F1: 0.42749998 F2: 0.86885244 F3: 3.0
+
+ 
+kneeElbowInvolvement <  3 and melaninIncontinence >=  0 and exocytosis <  1 and clubbing >=  0 and elongation !=  2 and munroIcroabcess <  3 and disappearance <  1 and perifollicular !=  1 and 
+ Fit:892.4006 F1: 0.028199999 F2: 0.7909836 F3: 9.0
+
+ 
+definiteBorders !=  2 and melaninIncontinence =  0 and hyperkeratosis !=  2 and clubbing !=  3 and 
+ Fit:707.3979 F1: 0.48910004 F2: 0.6803279 F3: 4.0
+
+ 
+familyHistory <  1 and hyperkeratosis <  2 and vacuolisation <  1 and spongiosis >=  2 and 
+ Fit:59.367302 F1: 0.7216 F2: 0.86885244 F3: 4.0
+
+ 
+elongation !=  3 and focalHypergranulosis <  1 and spongiosis >=  2 and 
+ Fit:1817.3651 F1: 0.7392 F2: 0.8442623 F3: 3.0
+
+ 
+erythema <  3 and scaling >=  3 and fibrosis <  3 and hyperkeratosis <  1 and elongation >=  2 and follicular !=  2 and bandLike !=  3 and 
+ Fit:733.39874 F1: 0.0294 F2: 0.8196721 F3: 7.0
+
+ 
+scalpInvolvement !=  1 and clubbing <  2 and sawYooth !=  2 and follicular >=  1 and perifollicular >=  1 and 
+ Fit:860.39996 F1: 0.028499998 F2: 0.795082 F3: 5.0
+
+ 
+familyHistory !=  1 and hyperkeratosis =  1 and clubbing !=  2 and elongation =  0 and focalHypergranulosis !=  2 and 
+ Fit:721.4018 F1: 0.093 F2: 0.7909836 F3: 5.0
+
+ 
+kneeElbowInvolvement <  3 and melaninIncontinence !=  2 and clubbing >=  0 and elongation !=  2 and munroIcroabcess <  2 and vacuolisation =  0 and follicular !=  2 and 
+ Fit:976.38916 F1: 0.5625 F2: 0.74590164 F3: 8.0
+
+ 
+scalpInvolvement !=  2 and focalHypergranulosis <  1 and vacuolisation <  1 and spongiosis >=  2 and 
+ Fit:716.3639 F1: 0.748 F2: 0.852459 F3: 4.0
+
+ 
+definiteBorders !=  3 and focalHypergranulosis <  1 and spongiosis >=  2 and 
+ Fit:1076.3651 F1: 0.7392 F2: 0.84836066 F3: 3.0
+
+ 
+scalpInvolvement <  3 and eosinophils !=  0 and elongation <  2 and focalHypergranulosis <  1 and spongiosis !=  1 and 
+ Fit:877.3969 F1: 0.22 F2: 0.86885244 F3: 5.0
+
+ 
+polygonalPapules <  1 and scalpInvolvement !=  2 and vacuolisation <  1 and spongiosis >=  2 and 
+ Fit:56.363846 F1: 0.748 F2: 0.85655737 F3: 4.0
+
+ 
+scalpInvolvement >=  0 and hyperkeratosis <  1 and clubbing !=  2 and elongation <  2 and focalHypergranulosis !=  2 and inflammatory >=  0 and 
+ Fit:926.3831 F1: 0.60830003 F2: 0.78688526 F3: 6.0
+
+ 
+polygonalPapules !=  2 and hyperkeratosis =  1 and clubbing !=  2 and elongation >=  0 and thinning !=  2 and 
+ Fit:489.42142 F1: 0.11850001 F2: 0.6885246 F3: 5.0
+
+ 
+definiteBorders >=  1 and hyperkeratosis =  1 and clubbing !=  2 and elongation =  0 and focalHypergranulosis !=  2 and 
+ Fit:488.40692 F1: 0.0736 F2: 0.7827869 F3: 5.0
+
+ 
+definiteBorders =  2 and eosinophils =  2 and acanthosis >=  2 and clubbing !=  3 and 
+ Fit:630.3967 F1: 0.0792 F2: 0.84016395 F3: 4.0
+
+ 
+definiteBorders =  2 and eosinophils =  2 and acanthosis !=  3 and clubbing !=  3 and 
+ Fit:661.3914 F1: 0.0297 F2: 0.83196723 F3: 4.0
+
+ 
+scalpInvolvement <  1 and elongation <  2 and focalHypergranulosis <  2 and 
+ Fit:960.3808 F1: 0.616 F2: 0.72540987 F3: 3.0
+
+ 
+Tempo Execucao:32.743
 Classe: 3
-id: 7137
-thinning = 0| 0.9800001
-vacuolisation >= 1| 0.8
-Fit:0.30362704F1:0.98F2:0.99590164
+scalpInvolvement !=  2 and melaninIncontinence >=  0 and munroIcroabcess !=  3 and bandLike !=  0 and 
+ Fit:4755.3076 F1: 0.9702 F2: 0.98770493 F3: 4.0
 
  
-Tempo Execucao:372.831
+melaninIncontinence >=  1 and eosinophils !=  2 and exocytosis >=  2 and parakeratosis !=  1 and elongation !=  3 and follicular <  2 and 
+ Fit:4100.3726 F1: 0.53 F2: 0.9057377 F3: 6.0
+
+ 
+melaninIncontinence >=  1 and munroIcroabcess !=  3 and bandLike >=  0 and 
+ Fit:4930.308 F1: 0.96 F2: 0.9918033 F3: 3.0
+
+ 
+munroIcroabcess !=  2 and bandLike >=  2 and 
+ Fit:6631.3325 F1: 0.99 F2: 0.99590164 F3: 2.0
+
+ 
+bandLike >=  2 and 
+ Fit:5492.3325 F1: 0.99 F2: 0.9918033 F3: 1.0
+
+ 
+definiteBorders !=  1 and scalpInvolvement <  2 and munroIcroabcess <  3 and perifollicular >=  0 and bandLike !=  0 and 
+ Fit:4447.3564 F1: 0.792 F2: 0.954918 F3: 5.0
+
+ 
+scalpInvolvement <  1 and bandLike >=  2 and 
+ Fit:6161.331 F1: 1.0 F2: 1.0 F3: 2.0
+
+ 
+scalpInvolvement !=  3 and perifollicular !=  1 and bandLike !=  0 and 
+ Fit:4072.3225 F1: 0.98 F2: 0.9836066 F3: 3.0
+
+ 
+melaninIncontinence >=  0 and munroIcroabcess !=  3 and bandLike !=  0 and 
+ Fit:3551.316 F1: 0.96040004 F2: 0.9795082 F3: 3.0
+
+ 
+Tempo Execucao:61.656
 Classe: 4
-id: 11429
-scaling != 3| 0.90000004
-kneeElbowInvolvement != 3| 0.85
-acanthosis < 2| 0.83
-hyperkeratosis != 2| 0.93
-spongiosis >= 2| 0.87
-bandLike != 3| 0.87
-Fit:306188.4F1:0.3895F2:0.88114756
+scaling >=  0 and definiteBorders !=  3 and follicularPapules >=  2 and eosinophils =  2 and disappearance =  2 and spongiosis !=  0 and 
+ Fit:1797.3945 F1: 0.0 F2: 0.86885244 F3: 6.0
 
  
-Tempo Execucao:358.872
+familyHistory !=  1 and pnlInfiltrate !=  1 and hyperkeratosis !=  1 and munroIcroabcess <  1 and vacuolisation >=  0 and spongiosis !=  0 and 
+ Fit:1324.3969 F1: 0.5082 F2: 0.7581967 F3: 6.0
+
+ 
+kneeElbowInvolvement <  2 and familyHistory >=  0 and pnlInfiltrate <  1 and clubbing !=  3 and elongation =  0 and thinning !=  2 and vacuolisation =  0 and spongiosis >=  1 and 
+ Fit:66.35701 F1: 0.798 F2: 0.93442625 F3: 8.0
+
+ 
+familyHistory !=  1 and clubbing !=  3 and elongation !=  2 and thinning !=  2 and vacuolisation =  0 and 
+ Fit:712.37103 F1: 0.68 F2: 0.72540987 F3: 5.0
+
+ 
+itching !=  2 and polygonalPapules !=  1 and kneeElbowInvolvement !=  1 and melaninIncontinence <  1 and pnlInfiltrate <  2 and exocytosis =  3 and parakeratosis !=  3 and 
+ Fit:1395.4066 F1: 0.2156 F2: 0.88114756 F3: 7.0
+
+ 
+itching <  1 and kneeElbowInvolvement <  1 and familyHistory >=  0 and pnlInfiltrate <  1 and exocytosis !=  0 and vacuolisation =  0 and 
+ Fit:682.3993 F1: 0.5 F2: 0.9303279 F3: 6.0
+
+ 
+itching !=  2 and kneeElbowInvolvement <  1 and spongiosis >=  3 and 
+ Fit:672.4058 F1: 0.1222 F2: 0.8360656 F3: 3.0
+
+ 
+scaling <  2 and definiteBorders <  3 and itching >=  2 and melaninIncontinence <  1 and exocytosis =  3 and parakeratosis >=  1 and vacuolisation =  0 and 
+ Fit:1169.386 F1: 0.03 F2: 0.86885244 F3: 7.0
+
+ 
+definiteBorders >=  1 and koebnerPhenomenon !=  3 and melaninIncontinence <  1 and exocytosis =  3 and parakeratosis >=  1 and vacuolisation =  0 and inflammatory <  3 and 
+ Fit:1018.39905 F1: 0.0882 F2: 0.8606557 F3: 7.0
+
+ 
+pnlInfiltrate <  1 and exocytosis !=  1 and focalHypergranulosis =  0 and spongiosis >=  1 and 
+ Fit:818.3727 F1: 0.6825 F2: 0.8893443 F3: 4.0
+
+ 
+itching !=  2 and polygonalPapules <  1 and pnlInfiltrate <  1 and exocytosis !=  0 and spongiosis >=  1 and 
+ Fit:686.3794 F1: 0.6348 F2: 0.89344263 F3: 5.0
+
+ 
+itching >=  2 and polygonalPapules !=  1 and kneeElbowInvolvement <  1 and spongiosis >=  1 and sawYooth !=  3 and 
+ Fit:649.424 F1: 0.152 F2: 0.7172131 F3: 5.0
+
+ 
+itching !=  2 and kneeElbowInvolvement <  1 and familyHistory >=  0 and melaninIncontinence !=  2 and vacuolisation =  0 and 
+ Fit:901.37897 F1: 0.63 F2: 0.76229507 F3: 5.0
+
+ 
+scaling !=  3 and itching <  3 and kneeElbowInvolvement <  1 and clubbing !=  2 and elongation =  0 and thinning !=  1 and focalHypergranulosis >=  0 and vacuolisation =  0 and 
+ Fit:68.34915 F1: 0.8633 F2: 0.90163934 F3: 8.0
+
+ 
+definiteBorders !=  2 and exocytosis >=  3 and 
+ Fit:791.41205 F1: 0.144 F2: 0.8032787 F3: 2.0
+
+ 
+itching <  2 and kneeElbowInvolvement <  1 and familyHistory >=  0 and melaninIncontinence <  2 and vacuolisation =  0 and inflammatory !=  3 and 
+ Fit:810.378 F1: 0.645 F2: 0.8442623 F3: 6.0
+
+ 
+itching !=  2 and polygonalPapules !=  1 and familyHistory >=  0 and melaninIncontinence !=  2 and clubbing <  3 and elongation !=  1 and thinning !=  2 and vacuolisation =  0 and inflammatory <  3 and 
+ Fit:1148.3894 F1: 0.54599994 F2: 0.71311474 F3: 9.0
+
+ 
+itching <  2 and kneeElbowInvolvement <  1 and familyHistory =  0 and melaninIncontinence !=  3 and focalHypergranulosis !=  1 and spongiosis >=  1 and 
+ Fit:706.3695 F1: 0.705 F2: 0.9139344 F3: 6.0
+
+ 
+itching !=  2 and polygonalPapules !=  1 and kneeElbowInvolvement <  1 and vacuolisation =  0 and inflammatory !=  3 and 
+ Fit:1008.3834 F1: 0.60059994 F2: 0.77459013 F3: 5.0
+
+ 
+scaling !=  0 and itching <  1 and kneeElbowInvolvement <  1 and familyHistory >=  0 and pnlInfiltrate <  2 and clubbing !=  2 and elongation =  0 and thinning !=  2 and vacuolisation =  0 and 
+ Fit:414.38043 F1: 0.6237 F2: 0.94262296 F3: 9.0
+
+ 
+Tempo Execucao:40.827
 Classe: 5
-id: 13210
-polygonalPapules != 2| 0.8
-fibrosis != 0| 1.0
-Fit:0.29870796F1:1.0F2:1.0
+fibrosis >=  3 and sawYooth <  3 and 
+ Fit:2629.411 F1: 0.37 F2: 0.90983605 F3: 3.0
 
  
-Tempo Execucao:364.636
+erythema >=  2 and scaling =  0 and fibrosis !=  0 and perifollicular =  0 and inflammatory <  3 and 
+ Fit:2199.3918 F1: 0.03 F2: 0.8606557 F3: 5.0
+
+ 
+fibrosis >=  1 and focalHypergranulosis !=  2 and disappearance =  0 and follicular !=  3 and 
+ Fit:6262.332 F1: 1.0 F2: 1.0 F3: 4.0
+
+ 
+fibrosis >=  1 and disappearance !=  2 and 
+ Fit:6224.332 F1: 1.0 F2: 0.99590164 F3: 3.0
+
+ 
+definiteBorders !=  2 and follicularPapules <  3 and pnlInfiltrate =  0 and disappearance >=  0 and sawYooth <  1 and perifollicular <  1 and 
+ Fit:4724.3843 F1: 0.5893 F2: 0.81557375 F3: 6.0
+
+ 
+erythema <  2 and melaninIncontinence <  1 and follicular =  0 and perifollicular !=  3 and 
+ Fit:3510.398 F1: 0.51299995 F2: 0.85655737 F3: 4.0
+
+ 
+Tempo Execucao:49.942
 Classe: 6
-id: 14971
-exocytosis != 3| 0.83000004
-perifollicular >= 1| 0.93
-classDisease = 3| 0.90999997
-Fit:0.30077648F1:1.0F2:1.0
+oralMucosalInvolvement <  1 and eosinophils !=  1 and fibrosis !=  3 and perifollicular !=  0 and 
+ Fit:6060.33 F1: 1.0 F2: 1.0 F3: 5.0
 
+ 
+definiteBorders >=  0 and oralMucosalInvolvement =  0 and eosinophils <  1 and follicular !=  0 and bandLike <  3 and 
+ Fit:5569.3413 F1: 0.9207 F2: 0.98770493 F3: 5.0
 
+ 
+familyHistory <  1 and eosinophils <  3 and acanthosis >=  1 and parakeratosis !=  1 and spongiform !=  1 and follicular !=  0 and 
+ Fit:1918.4098 F1: 0.2079 F2: 0.94262296 F3: 7.0
 
-2302163980637
+ 
+itching <  3 and polygonalPapules <  2 and scalpInvolvement >=  1 and melaninIncontinence !=  2 and fibrosis =  0 and acanthosis =  2 and hyperkeratosis !=  1 and parakeratosis =  2 and clubbing >=  0 and thinning >=  0 and munroIcroabcess >=  0 and spongiosis >=  2 and follicular !=  3 and 
+ Fit:1895.3904 F1: 0.07 F2: 0.9467213 F3: 13.0
 
+ 
+oralMucosalInvolvement <  3 and familyHistory >=  0 and hyperkeratosis >=  0 and perifollicular >=  1 and 
+ Fit:5923.333 F1: 1.0 F2: 0.99590164 F3: 4.0
 
+ 
+definiteBorders >=  0 and oralMucosalInvolvement =  0 and eosinophils !=  2 and spongiosis >=  2 and bandLike !=  3 and 
+ Fit:1694.4126 F1: 0.2146 F2: 0.71311474 F3: 5.0
 
+ 
+oralMucosalInvolvement !=  3 and familyHistory =  1 and hyperkeratosis >=  0 and thinning <  2 and perifollicular >=  1 and 
+ Fit:4943.389 F1: 0.57 F2: 0.97540987 F3: 5.0
 
-
+ 
+oralMucosalInvolvement !=  3 and familyHistory =  1 and hyperkeratosis >=  1 and thinning <  2 and bandLike !=  2 and 
+ Fit:2870.3992 F1: 0.4257 F2: 0.954918 F3: 5.0
 
  
